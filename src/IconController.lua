@@ -805,7 +805,7 @@ function IconController.setupHealthbar()
 	-- Create a fake healthbar icon to mimic the core health gui
 	task.defer(function()
 		runService.Heartbeat:Wait()
-		local Icon = require(iconModule)
+		local Icon = require(iconModule).default
 
 		Icon.new()
 			:setProperty("internalIcon", true)
@@ -959,7 +959,7 @@ coroutine.wrap(function()
 	
 	-- Create PC 'Enter Controller Mode' Icon
 	runService.Heartbeat:Wait() -- This is required to prevent an infinite recursion
-	local Icon = require(iconModule)
+	local Icon = require(iconModule).default
 	local controllerOptionIcon = Icon.new()
 		:setProperty("internalIcon", true)
 		:setName("_TopbarControllerOption")
@@ -1072,33 +1072,6 @@ coroutine.wrap(function()
 		------------------------------------------------------------------------------------------------------------
 
 	end)
-	
-	
-	
-
-
-	if not isStudio then
-		local ownerId = game.CreatorId
-		local groupService = game:GetService("GroupService")
-		if game.CreatorType == Enum.CreatorType.Group then
-			local success, ownerInfo = pcall(function() return groupService:GetGroupInfoAsync(game.CreatorId).Owner end)
-			if success then
-				ownerId = ownerInfo.Id
-			end
-		end
-		local version = require(iconModule.VERSION)
-		if localPlayer.UserId ~= ownerId then
-			local marketplaceService = game:GetService("MarketplaceService")
-			local success, placeInfo = pcall(function() return marketplaceService:GetProductInfo(game.PlaceId) end)
-			if success and placeInfo then
-				-- Required attrbute for using TopbarPlus
-				-- This is not printed within stuido and to the game owner to prevent mixing with debug prints
-				local gameName = placeInfo.Name
-				print(("\n\n\n⚽ %s uses TopbarPlus-Forked %s\n🍍 TopbarPlus-Forked was originally developed by ForeverHD and the Nanoblox Team, forked by iamEvanRBLX.\n🚀 You can learn more and take a free copy by searching for 'TopbarPlus' on the DevForum\n\n"):format(gameName, version))
-			end
-		end
-	end
-
 end)()
 
 -- Mimic the enabling of the topbar when StarterGui:SetCore("TopbarEnabled", state) is called
@@ -1176,4 +1149,4 @@ end
 pcall(topbarInsetChanged)
 guiService:GetPropertyChangedSignal("TopbarInset"):Connect(topbarInsetChanged)
 
-return { default = IconController }
+return IconController

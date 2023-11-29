@@ -2250,4 +2250,4 @@ function Icon:destroy()
 end
 Icon.Destroy = Icon.destroy
 
-return { default = Icon }
+return { default = Icon, IconController = IconController }
