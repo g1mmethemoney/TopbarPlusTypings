@@ -1,6 +1,6 @@
 {
   "name": "@gimmethemoney/topbar-plus",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Those are typings for iAmEvan's fork of TopbarPlus that supports new roblox topbar style.",
   "main": "out/init.lua",
   "scripts": {
@@ -8,8 +8,8 @@
     "watch": "rbxtsc -w",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["topbar", "plus"],
+  "author": "gimmethemoney / wAD",
   "license": "ISC",
   "types": "out/index.d.ts",
   "files": [
