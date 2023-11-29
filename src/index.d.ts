@@ -4,8 +4,8 @@ export type ToggleState = "selected" | "deselected";
 export interface IconEvents {
 	selected: RBXScriptSignal;
 	deselected: RBXScriptSignal;
-	toggled: RBXScriptSignal<(isSelected: boolean) => void>;
-	userToggled: RBXScriptSignal<(isSelected: boolean) => void>;
+	toggled: RBXScriptSignal<(selected: Icon) => void>;
+	userToggled: RBXScriptSignal<(selected: Icon) => void>;
 	hoverStarted: RBXScriptSignal;
 	hoverEnded: RBXScriptSignal;
 	dropdownOpened: RBXScriptSignal;
